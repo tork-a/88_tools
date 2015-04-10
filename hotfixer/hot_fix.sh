@@ -18,7 +18,7 @@ patch_dir=${3:-/opt/ros/hydro/share}
 patch_prefix=${4:-1}
 
 echo_green ";; download patch file https://github.com/${patch_repo}/pull/${patch_no}.diff"
-wget -O /tmp/$$.patch --no-check-certificate https://github.com/${patch_repo}/pull/${patch_no}.diff 2> /dev/null
+wget -O /tmp/$$.patch -q --no-check-certificate https://github.com/${patch_repo}/pull/${patch_no}.diff || (echo_red "error on downloading pach files"; kill $$)
 echo -e "\e[33m"
 cat /tmp/$$.patch
 echo -e "\e[0m"
