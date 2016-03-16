@@ -14,7 +14,7 @@ function echo_green {
 
 patch_repo=$1
 patch_no=$2
-patch_dir=${3:-/opt/ros/hydro/share}
+patch_dir=${3:-/opt/ros/indigo/share}
 patch_prefix=${4:-1}
 
 echo_green ";; download patch file https://github.com/${patch_repo}/pull/${patch_no}.diff"
@@ -25,7 +25,7 @@ echo -e "\e[0m"
 # theck if this is python module
 sed -n '/diff --git a\/\(.*\)\/src\/\1\/.*\.py/{q1}' /tmp/$$.patch
 if [ $? -eq 1 ]; then
-    cd /opt/ros/hydro/lib/python2.7/dist-packages
+    cd /opt/ros/indigo/lib/python2.7/dist-packages
     prefix=3
 else
     cd ${patch_dir}
