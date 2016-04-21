@@ -1,0 +1,16 @@
+<package>
+  <name>88_tools</name>
+  <version>0.1.0</version>
+  <description>Miscellaneious toolkit for ROS-based robot software</description>
+
+  <maintainer email="dev@opensource-robotics.tokyo.jp">TORK</maintainer>
+  <author email="k-okada@opensource-robotics.tokyo.jp">Kei Okada</author>
+  <author email="iiysaito@opensource-robotics.tokyo.jp">Isaac I. Y. Saito</author>
+  <license>Apache License 2.0</license>
+  <url type="bugtracker">https://github.com/tork-a/delivery/88_tools</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <test_depend>rostest</test_depend>
+
+  <export />
+</package>
