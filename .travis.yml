@@ -1,0 +1,46 @@
+sudo: required 
+dist: trusty 
+language: generic 
+#compiler:
+#  - gcc
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+    recipients:
+      - dev@opensource-robotics.tokyo.jp
+env:
+  global:
+    - CATKIN_WS=~/catkin_ws
+    - CATKIN_WS_SRC=${CATKIN_WS}/src
+    - DEB_REPOSITORY=http://packages.ros.org/ros/ubuntu
+    - ROS_DISTRO=indigo
+  matrix:
+    - MODULE="hotfix"
+install:
+  - sudo sh -c "echo \"deb ${DEB_REPOSITORY} `lsb_release -cs` main\" > /etc/apt/sources.list.d/ros-latest.list"
+  - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install -y python-catkin-tools python-rosdep
+  - sudo rosdep init
+  - rosdep update
+  # Use rosdep to install all dependencies (including ROS itself)
+  - rosdep install --from-paths ./ -i -y --rosdistro $ROS_DISTRO
+  - source /opt/ros/$ROS_DISTRO/setup.bash
+script: 
+  - mkdir -p $CATKIN_WS_SRC
+  - ln -s $TRAVIS_BUILD_DIR $CATKIN_WS_SRC
+  - cd $CATKIN_WS
+  - catkin init
+  # Enable install space
+  #- catkin config --install
+  # Build [and Install] packages
+  - catkin build --limit-status-rate 0.1 --no-notify -DCMAKE_BUILD_TYPE=Debug
+  - source devel/setup.bash
+  # Build tests
+  - catkin build --limit-status-rate 0.1 --no-notify --make-args tests
+  # Run tests
+  - catkin run_tests
+  # check test (this only works from indigo onward)
+  - catkin_test_results build
+  - if [[ "$MODULE"="hotfix" ]]; then rostest 88_tools hotfix.test; fi

@@ -1,0 +1,3 @@
+<launch>
+  <test pkg="88_tools" type="test_hotfix.sh" test-name="test_hotfix" time-limit="3600.0" />
+</launch>
