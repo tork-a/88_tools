@@ -10,6 +10,7 @@
   <url type="bugtracker">https://github.com/tork-a/delivery/88_tools</url>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>rosbash</run_depend>
   <test_depend>rostest</test_depend>
 
   <export />

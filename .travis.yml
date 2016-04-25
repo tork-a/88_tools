@@ -43,4 +43,4 @@ script:
   - catkin run_tests
   # check test (this only works from indigo onward)
   - catkin_test_results build
-  - if [[ "$MODULE"="hotfix" ]]; then rostest 88_tools hotfix.test; fi
+  - if [[ "$MODULE"="hotfix" ]]; then rosrun 88_tools test_hotfix.sh; fi
