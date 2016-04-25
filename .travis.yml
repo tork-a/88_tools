@@ -38,9 +38,9 @@ script:
   - catkin build --limit-status-rate 0.1 --no-notify -DCMAKE_BUILD_TYPE=Debug
   - source devel/setup.bash
   # Build tests
-  - catkin build --limit-status-rate 0.1 --no-notify --make-args tests
+  #- catkin build --limit-status-rate 0.1 --no-notify --make-args tests
   # Run tests
-  - catkin run_tests
+  #- catkin run_tests
   # check test (this only works from indigo onward)
-  - catkin_test_results build
+  #- catkin_test_results build
   - if [[ "$MODULE"="hotfix" ]]; then rosrun 88_tools test_hotfix.sh; fi
