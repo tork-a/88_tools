@@ -46,7 +46,7 @@ cd $TRAVIS_BUILD_DIR && sudo dpkg -i ./test/ros-indigo-hrpsys_315.8.0-0trusty-20
 
 # Run hotfix script.
 wget https://patch-diff.githubusercontent.com/raw/fkanehiro/hrpsys-base/pull/978.patch
-./hotfixer/hot_fix.sh fkanehiro/hrpsys-base 978 1
+./hotfixer/hot_fix.sh fkanehiro/hrpsys-base 978 /opt/ros/indigo/lib/python2.7/dist-packages/hrpsys 2 0
 
 # Check if the necessary change was made.
 if grep -q "if isConnected(outP, inP) == True and False" /opt/ros/indigo/lib/python2.7/dist-packages/hrpsys/rtm.py; then 
