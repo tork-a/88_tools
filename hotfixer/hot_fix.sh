@@ -16,8 +16,13 @@ patch_repo=$1
 patch_no=$2
 patch_dir=${3:-/opt/ros/indigo/share}
 patch_prefix=${4:-1}
-patch_index=${5:-1}
+patch_index=${5:--1}
 
+echo_green ";; patch_repo=${patch_repo}"
+echo_green ";; patch_no=${patch_no}"
+echo_green ";; patch_repo=${patch_repo}"
+echo_green ";; patch_prefix=${patch_prefix}"
+echo_green ";; patch_index=${patch_index}"
 echo_green ";; download patch file https://github.com/${patch_repo}/pull/${patch_no}.diff"
 wget -O /tmp/$$.patch -q --no-check-certificate https://github.com/${patch_repo}/pull/${patch_no}.diff || (echo_red "error on downloading pach files"; kill $$)
 if [ ${patch_index} -ne -1 ]; then
