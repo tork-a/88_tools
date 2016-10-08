@@ -1,0 +1,4 @@
+#!/bin/bash
+
+env | grep ROS
+rospack list-names | xargs -n1 sh -c 'echo -n $0; echo -n "\t\t"; rosversion $0 | tr -d "\n"; echo -n "\t"; rospack find $0'
