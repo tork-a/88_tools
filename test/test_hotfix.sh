@@ -32,6 +32,8 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 # Use https://github.com/fkanehiro/hrpsys-base/pull/978 to apply patch(es).
+# 2017/07/13 987 is deleted, so created new one
+# Use https://github.com/fkanehiro/hrpsys-base/pull/1187 to apply patch(es).
 
 set -x
 
@@ -45,8 +47,8 @@ sudo apt-get -qq purge ros-indigo-hrpsys  # The dependency should be fulfilled b
 cd $TRAVIS_BUILD_DIR && sudo dpkg -i ./test/ros-indigo-hrpsys_315.8.0-0trusty-20160201-040843-0800_amd64.deb || (echo 'hrpsys installation failed at ${TRAVIS_BUILD_DIR}. Exitting.' && exit 1); # Need to use un-patched veersion of hrpsys.
 
 # Run hotfix script.
-wget https://patch-diff.githubusercontent.com/raw/fkanehiro/hrpsys-base/pull/978.patch
-yes | ./hotfixer/hot_fix.sh fkanehiro/hrpsys-base 978 /opt/ros/indigo/lib/python2.7/dist-packages/hrpsys 2 0
+wget https://patch-diff.githubusercontent.com/raw/fkanehiro/hrpsys-base/pull/1184.patch
+yes | ./hotfixer/hot_fix.sh fkanehiro/hrpsys-base 1184 /opt/ros/indigo/lib/python2.7/dist-packages/hrpsys 2 0
 
 # Check if the necessary change was made.
 if grep -q "if isConnected(outP, inP) == True and False" /opt/ros/indigo/lib/python2.7/dist-packages/hrpsys/rtm.py; then 
