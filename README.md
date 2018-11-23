@@ -7,7 +7,7 @@ List all installed ROS package location and versions
 
 Usage : `$ curl -sL https://goo.gl/Dj5BCp | bash`
 
-Eample
+Example
 
 ```
 $ source /opt/ros/kinetic/setup.bash
@@ -25,3 +25,28 @@ actionlib_msgs		1.12.5	/opt/ros/kinetic/share/actionlib_msgs
 ```
 
 Note: Pleaes source `setup.bash` before run this program
+
+## ci_setup
+
+### create_travis_setting.py
+
+Before using this program, please `fork` the target repository.
+
+This program create PullRequest to add travis setting file (.travis.yml)
+
+Usage : `~/88_tools/ci_setup/create_travis_setting.py http://github.com/PR2/robot_self_filter`
+
+This will create `add_travis` branch to your forked repository, add `travis.yml` file and create pull request.
+
+### change_maintainer_name.sh
+
+This program will change the maintainer name to `ROS Orphaned Package Maintainers`
+
+Example:
+
+```
+$ git clone http://github.com/foo/robot_self_filter
+$ cd robot_self_filter
+$ git checkout add_travis
+$ ~/88_tools/ci_setup/change_maintainer_name.sh
+```
