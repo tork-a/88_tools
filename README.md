@@ -34,7 +34,7 @@ Before using this program, please `fork` the target repository.
 
 This program create PullRequest to add travis setting file (.travis.yml)
 
-Usage : `~/88_tools/ci_setup/create_travis_setting.py http://github.com/PR2/robot_self_filter`
+Usage : `curl -sL https://raw.github.com/tork-a/88_tools/master/ci_setup/create_travis_settings.py | python - http://github.com/PR2/robot_self_filter`
 
 This will create `add_travis` branch to your forked repository, add `travis.yml` file and create pull request.
 
