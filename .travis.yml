@@ -24,7 +24,7 @@ install:
   - sudo apt-get install -y --force-yes -q -qq dpkg # https://github.com/travis-ci/travis-ci/issues/9361#issuecomment-408431262 dpkg-deb: error: archive has premature member 'control.tar.xz' before 'control.tar.gz' #9361
   - sudo apt-get -qq install -y python-catkin-tools python-rosdep
   - sudo rosdep init
-  - rosdep update
+  - rosdep update --include-eol-distros
   # Use rosdep to install all dependencies (including ROS itself)
   - rosdep install --from-paths ./ -i -y --rosdistro $ROS_DISTRO
   - source /opt/ros/$ROS_DISTRO/setup.bash
