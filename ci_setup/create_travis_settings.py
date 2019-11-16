@@ -123,7 +123,7 @@ notifications:
 
 def write_readme_md(base_org, base_repo, base_branch, **kwargs):
     def _write_status(f, base_org, base_repo, base_branch, **kwargs):
-        f.write('{base_repo} [![Build Status](https://travis-ci.com/{base_org}/{base_repo}.svg?branch={base_branch})](https://travis-ci.org/{base_org}/{base_repo})\n'.format(**locals()))
+        f.write('{base_repo} [![Build Status](https://travis-ci.com/{base_org}/{base_repo}.svg?branch={base_branch})](https://travis-ci.com/{base_org}/{base_repo})\n'.format(**locals()))
 
     def _write_line(f, base_org, base_repo, base_branch, **kwargs):
         f.write('{}\n'.format('='*(len(base_org)*2+len(base_repo)*3+len(base_branch)+80)))
